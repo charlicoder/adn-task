@@ -1,14 +1,13 @@
 import pdb
 from statistics import mode
 from django.db import models
-from django.contrib.auth.models import User
 import secrets
-from openpyxl import load_workbook, Workbook
+from openpyxl import Workbook
 
 # Create your models here.
 class AttendanceURLToken(models.Model):
     url_token = models.CharField(max_length=100, blank=False, null=False, unique=True, editable=False, primary_key=True)
-    create_date = models.DateField(auto_now_add=True)
+    create_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.url_token

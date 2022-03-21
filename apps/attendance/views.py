@@ -8,6 +8,7 @@ from django.views.generic.edit import (CreateView, UpdateView, DeleteView)
 from django.views.generic.base import TemplateView
 from django.views import View
 from openpyxl import load_workbook, Workbook
+from datetime import datetime, timedelta, timezone
 import secrets
 from .models import *
 
@@ -19,6 +20,16 @@ class UrlListView(LoginRequiredMixin, ListView):
 
 class AddAttendanceView(LoginRequiredMixin, TemplateView):
     template_name = 'attendance/add-attendance.html'
+
+    def get(self, request, *args, **kwargs):
+        pk = kwargs['pk']
+        url_token = AttendanceURLToken.objects.get(pk=pk)
+        today = datetime.now(tz=timezone.utc)
+        url_date = url_token.create_date
+        if url_date + timedelta(minutes=1) < today :
+            return render(request, 'attendance/error.html', {})
+        else:
+            return render(request, 'attendance/add-attendance.html', {})
 
     def post(self, request, *args, **kwargs):
         name = request.POST.get('name')

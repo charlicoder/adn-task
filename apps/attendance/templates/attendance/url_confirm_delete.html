@@ -3,12 +3,12 @@
 {% block container %}
     <h1>Delete URL</h1>
 
-    <div class="card bg-danger">
+    <div class="card bg-secondary">
         <form method="post">{% csrf_token %}
      
  
  
-            <p>Are you sure you want to delete "{{ object }}"?</p>
+            <p class='display-6 mt-3 mb-3'>Are you sure you want to delete "{{ object }}"?</p>
         
         
         
