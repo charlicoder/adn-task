@@ -12,17 +12,19 @@
         {% endblock header %}
 
         {% block body %}
-            <div class='container'>
+            <div class='container mt-2'>
                 {% block container %}
                     <h1>Dashboard</h1>
-
-                    <div class=" card text-white bg-secondary">
-                        <form method='post'>
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button class="btn btn-primary" type='submit'>Generate URL</button>
-                        </form>
+                    <div class='row justify-content-md-center mt-5'>
+                        <div class='col-2'>
+                            <form method='post'>
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button class="btn btn-lg btn-primary" type='submit'>Generate URL</button>
+                                </form>
+                        </div>
                     </div>
+                    
                 {% endblock %}
             </div>
         {% endblock body %}
