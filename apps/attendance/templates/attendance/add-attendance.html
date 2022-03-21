@@ -1,0 +1,34 @@
+{% extends 'dashboard/index.html' %}
+
+{% block container %}
+    <p class='display-6 mt-3 mb-3'>Add Attende into the Sheet for the date:<b> {{ object.create_date }}</b></p> 
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5 ">
+            <form method='post' action='' class="row gy-2 gx-3 align-items-center">
+                <div class='col-2'></div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" name='name' placeholder='Type your name..'>
+                </div>
+
+                <div class="col-auto">
+                    <select class="form-select" id="autoSizingSelect" name='remark'>
+                        <option selected>Choose...</option>
+                        <option value="1">Yes - working from home</option>
+                        <option value="2">Yes</option>
+                        <option value="3">On Leave</option>
+                        <option value="3">Sick Leave</option>
+                    </select>
+                </div>
+  
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class='col-2'></div>
+
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
+

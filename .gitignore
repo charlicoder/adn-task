@@ -1,3 +1,6 @@
 venv*
 *.pyc
 .env
+.DS_Store
+public/
+data

@@ -1,16 +1,46 @@
-<div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-        <span class="fs-4">Simple header</span>
-    </a>
+<header>
+  <div class="px-3 py-2 bg-dark text-white">
+    <div class="container">
+      <div
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
+        >
+          ADN
+        </a>
 
-    <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-    </ul>
-    </header>
-</div>
+        <ul
+          class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small"
+        >
+          {% if request.user.is_authenticated %}
+          <li>
+            <a href="{% url 'dashboard:home' %}" class="nav-link text-white">
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'attendance:url_list' %}" class="nav-link text-white">
+              Attendance
+            </a>
+          </li>
+
+          <li>
+            <a href="{% url 'accounts:logout' %}" class="nav-link text-white">
+             Welcome {{ request.user.username|upper }} (Logout)
+            </a>
+          </li>
+          {% else %}
+          <li>
+            <a href="{% url 'accounts:login' %}" class="nav-link text-white"
+              >Login</a
+            >
+          </li>
+          
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

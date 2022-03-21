@@ -1,0 +1,13 @@
+{% extends 'dashboard/index.html' %}
+
+{% block container %}
+    <h1>Generate URL</h1>
+
+    <div class="card text-white bg-secondary">
+        <form method='post' action="{% url 'attendance:generate_url' %}">
+            {% csrf_token %}
+            {{ form.as_p }} 
+            <button class="btn btn-primary" type='submit'>Generate URL</button>
+        </form>
+    </div>
+{% endblock %}

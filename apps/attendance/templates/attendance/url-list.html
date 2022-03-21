@@ -1,0 +1,42 @@
+
+{% extends 'dashboard/index.html' %}
+{% load static %}
+
+{% block container %}
+
+    <div class="container mt-5">
+        <h1>Attendance List</h1>
+        <div class='card'>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Go to URL</th>
+                        <th scope="col">Excel Sheet</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                {% for url in object_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ url.create_date }}</td>
+                        <td>
+                            <a href='{% url "attendance:add_attendance" url.url_token %}'>Attendance</a>
+                        </td>
+                        <td>
+                            <a href='{% static "attendance" %}/{{url.url_token}}.xlsx'>Download</a>
+                        </td>
+                        <td>
+                            <form method="POST" action="{% url 'attendance:delete_attendance' pk=url.url_token %}">
+                                {% csrf_token %}
+                                <input type="submit" value="DELETE">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock container %}
