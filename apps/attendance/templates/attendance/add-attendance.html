@@ -5,7 +5,8 @@
 
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5 ">
-            <form method='post' action='' class="row gy-2 gx-3 align-items-center">
+            <form method='post' class="row gy-2 gx-3 align-items-center">
+                {% csrf_token %}
                 <div class='col-2'></div>
                 <div class="col-auto">
                     <input type="text" class="form-control" name='name' placeholder='Type your name..'>
@@ -14,10 +15,10 @@
                 <div class="col-auto">
                     <select class="form-select" id="autoSizingSelect" name='remark'>
                         <option selected>Choose...</option>
-                        <option value="1">Yes - working from home</option>
-                        <option value="2">Yes</option>
-                        <option value="3">On Leave</option>
-                        <option value="3">Sick Leave</option>
+                        <option value="yea_home">Yes - working from home</option>
+                        <option value="yes">Yes</option>
+                        <option value="on_leave">On Leave</option>
+                        <option value="sick_leave">Sick Leave</option>
                     </select>
                 </div>
   
